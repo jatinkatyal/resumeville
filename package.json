@@ -1,0 +1,27 @@
+{
+  "name": "jatin-katyal",
+  "version": "1.0.0",
+  "description": "A Node.js site to showcase some skills",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/jatinkatyal/jatin-katyal-nodejs"
+  },
+  "keywords": [
+    "jatin",
+    "katyal",
+    "cv",
+    "resume",
+    "biodata",
+    "curriculam",
+    "vitae"
+  ],
+  "author": "Jatin Katyal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
