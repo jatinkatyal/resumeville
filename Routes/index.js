@@ -1,20 +1,22 @@
 var express = require('express');
+var path = require('path');
+
 var router = express.Router();
 
 router
 	.route('/')
 		.get((req,res)=>{
-			res.send('<h1>Homepage</H1>');
+			res.sendFile(path.join(__dirname,'../Views/homepage.html'));
 		});
 router
 	.route('/skills')
 		.get((req,res)=>{
-			res.send('<H1>Skills</H1>');
+			res.sendFile(path.join(__dirname,'../Views/skills.html'));
 		});
 router
 	.route('/projects')
 		.get((req,res)=>{
-			res.send('<h1>Projects</h1>');
+			res.sendFile(path.join(__dirname,'../Views/projects.html'));
 		});
-		
+
 module.exports = router;
