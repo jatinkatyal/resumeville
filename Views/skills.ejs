@@ -6,5 +6,13 @@
 </head>
 <body>
 	<h1>Skills</h1>
+	<a href="/">Home</a>
+	<ul>
+		<% for(i in skills){ %>
+			<li><%= skills[i].name %></li><%
+		}%>
+	</ul>
+	
+	<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

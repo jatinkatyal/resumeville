@@ -1,7 +1,6 @@
 //***********************************************
 //				Imports
 //***********************************************
-var path = require('path');
 var models = require('../Models');
 
 //***********************************************
@@ -10,17 +9,17 @@ var models = require('../Models');
 var getSkills = (req,res)=>{
 	models.skills.find((err,docs)=>{
 		if(err){console.log(err);}
-		else{res.send(docs);}
+		else{res.render('../Views/skills.ejs',{skills:docs});}
 	})
 };
 var getProjects = (req,res)=>{
 	models.projects.find((err,docs)=>{
 		if(err){console.log(err)}
-		else{res.send(docs)}
+		else{res.render('../Views/projects.ejs',{projects:docs})}
 	})
 };
 var getHome =(req,res)=>{
-	res.sendFile(path.join(__dirname,'../Views/homepage.html'));
+	res.render('../Views/homepage.ejs');
 };
 
 module.exports = {

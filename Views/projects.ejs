@@ -6,6 +6,13 @@
 </head>
 <body>
 	<h1>Projects</h1>
+	<a href="/">Home</a>
+	<ul>
+	<% for(i in projects){ %>
+		<li> <%= projects[i].name %></li> <%
+	} %>
+	</ul>
+	
 	<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
