@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>Jatin Katyal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/ >
+	<link rel="stylesheet" type="text/css" href="/css/custom.css"/ >
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row block-1 text-center">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<h2 class="display-3">
+					<%= user.name.first + ' ' + user.name.last %>
+				</h2>
+				<p><%= user.about.objective %></p>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row block-2 ">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h3 class="text-center">About</h3>
+				<p>	<%= user.about.long %> </p>
+				<p>	Interests: <%= user.about.hobbies %> </p>
+				<p>	<%= user.about.moto %> </p>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row block-1">
+			<div class="col-sm-6">
+				<h3 class="text-center">Education</h3>
+				<ul>
+				<% user.education.forEach((item, index, array) => { %>
+					<li>
+						<%= item.degree + " with " + item.score + " from " + item.board %>
+					</li>
+				<% }) %>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="text-center">Experience</h3>
+				<ul>
+				<% user.experience.forEach((item, index, array) => { %>
+					<li>
+						<p><%= item.position + " at " + item.organisation %>
+						<br>
+						<%= item.description %>
+						</p>
+					</li>
+				<% }) %>
+				</ul>
+			</div>
+		</div>
+		<div class="row block-2">
+			<div class="col-sm-6">
+				<h3 class="text-center">Projects</h3>
+				<ul>
+				<% user.projects.forEach((item, index, array) => { %>
+					<li>
+						<h5><%= item.title %></h5>
+						<p><%= item.description %><br>
+						Technologies: <%= item.technologies %></p>
+						<% if(item.link){ %>
+						<a href=<%= item.link %>>Link is here</a>
+						<% } %>
+						<% if(item.git){ %>
+						<a href=<%= item.git %>>Repository is here</a>
+						<% } %>
+					</li>
+				<% }) %>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="text-center">Skills</h3>
+				<ul>
+				<% user.skills.forEach((item,index,array)=>{ %>
+					<li><%= item %></li>
+				<% })%>
+				</ul>
+			</div>
+		</div>
+		<div class="row block-1">
+			<div class="col-sm-6">
+				<h3 class="text-center">Contact</h3>
+				<p><%= user.contact.mobile %></p>
+				<p><%= user.contact.telephone %></p>
+				<p><%= user.contact.email %></p>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="text-center">Address</h3>
+				<p><%= user.address.streetAddress%><br>
+				<%= user.address.area %><br>
+				<%= user.address.district %><br>
+				<%= user.address.state %> - 
+				<%= user.address.pin %></p>
+			</div>
+		</div>
+		<div class="row block-2">
+			<div class="col-sm-6">
+				<h3 class="text-center">Recent Activities</h3>
+				<ul><% user.activities.forEach((item,index,array)=>{ %>
+					<li><%= item %></li>
+				<%}) %>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

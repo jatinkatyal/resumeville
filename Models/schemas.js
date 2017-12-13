@@ -105,7 +105,7 @@ var users = new mongoose.Schema({
 	education : [education],
 	skills : [String],
 	projects : [projects],
-	experience : experience,
+	experience : [experience],
 	activities : [String]
 });
 

@@ -16,7 +16,7 @@ var getUsers = (req,res)=>{
 var getUser = (req,res)=>{
 	models.user.findById(req.params.userid).exec((err,doc)=>{
 		if(err){console.log(err);}
-		else{res.render('../Views/users.ejs',{users:[doc]});}
+		else{res.render('../Views/users.ejs',{user:doc});}
 	});
 };
 var getAbout = (req,res)=>{
