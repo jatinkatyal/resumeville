@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>Add Resume - Resumeville</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/ >
+	<link rel="stylesheet" type="text/css" href="/css/custom.css"/ >
+</head>
+<body>
+	<div class="container-fluid">
+		<form method="post" action="/users/add-user">
+			<div class="row block-1 text-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col">first:*</div>
+						<input class="col" type="text" name="name_first">
+					</div>
+					<div class="row">
+						<div class="col">middle:</div>
+						<input class="col" type="text" name="name_middle">
+					</div>
+					<div class="row">
+						<div class="col">last:*</div>
+						<input class="col" type="text" name="name_last">
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<div class="row block-2 ">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h3 class="text-center">About</h3>
+					<div class="row">
+						<div class="col">objective:</div>
+						<input class="col" type="text" name="about_objective">
+					</div>
+					<div class="row">
+						<div class="col">long description:*</div>
+						<input class="col" type="text" name="about_long">
+					</div>
+					<div class="row">
+						<div class="col">hobbies:</div>
+						<input type="text" name="about_hobbies">
+						<span id="hobby"></span>
+						<input type="button" value="add more" onClick= "addMore('hobby')" >
+					</div>
+					<div class="row">
+						<div class="col">moto:</div>
+						<input class="col" type="text" name="about_moto">
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row block-1">
+				<div class="col-sm-6">
+					<h3 class="text-center">Education</h3>
+					<div class="row">
+						<div class="col">degree*</div>
+						<input class="col" type="text" name="education_degree">
+					</div>
+					<div class="row">
+						<div class="col">board*</div>
+						<input class="col" type="text" name="education_board">
+					</div>
+					<div class="row">
+						<div class="col">score*</div>
+						<input class="col" type="text" name="education_score">
+					</div><br>
+					<span id='edu'></span>
+					<input type="button" value="add more" onClick="addMore('edu')">
+				</div>
+				<div class="col-sm-6">
+					<h3 class="text-center">Experience</h3>
+					<div class="row">
+						<div class="col">position*</div>
+						<input class="position" type="text" name="experience_position">
+					</div>
+					<div class="row">
+						<div class="col">organisation*</div>
+						<input class="organisation" type="text" name="experience_organisation" %>">
+					</div>
+					<div class="row">
+						<div class="col">description</div>
+						<input class="description" type="text" name="experience_description">
+					</div>
+					<br>
+					<span id="exp"></span>
+					<input type="button" onClick="addMore('exp')" value="addMore">
+				</div>
+			</div>
+			<div class="row block-2">
+				<div class="col-sm-6">
+					<h3 class="text-center">Projects</h3>
+					<div class="row">
+						<div class="col">title*</div>
+						<input type="text" name="project_title">
+					</div>
+					<div class="row">
+						<div class="col">description*</div>
+						<input type="text" name="project_description">
+					</div>
+					<div class="row">
+						<div class="col">Submission</div>
+						<input type="date" name="project_submission">
+					</div>
+					<div class="row">
+						<div class="col">Technologies:</div>
+						<input type="text" name="project_technologies">
+					</div>
+					<div class="row">
+						<div class="col">link</div>
+							<input type="text" name="project_link">
+					</div>
+					<div class="row">
+						<div class="col">repository</div>
+						<input type="text" name="project_git">
+					</div>
+					<br>
+					<span id="proj"></span>
+					<input type="button" value="add more" onClick="addMore('proj')">
+				</div>
+				<div class="col-sm-6">
+					<h3 class="text-center">Skills</h3>
+					<input type="text" name="skills">
+					<span id="skills"></span>
+					<input type="button" value="add more" onClick="addMore('skills')">
+				</div>
+			</div>
+			<div class="row block-1">
+				<div class="col-sm-6">
+					<h3 class="text-center">Contact</h3>
+					<div class="row">
+						<span class="col">mobile*:</span>
+						<input class="col" type="text" name="contact_mobile">
+					</div>
+					<div class="row">
+						<span class="col">telephone:</span>
+						<input class="col" type="text" name="contact_telephone">
+					</div>
+					<div class="row">
+						<span class="col">email*:</span>
+						<input class="col" type="text" name="contact_email">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<h3 class="text-center">Address</h3>
+					<div class="row">
+						<div class="col">street address*:</div>
+						<input class="col" type="text" name="address_streetAddress">
+					</div>
+					<div class="row">
+						<div class="col">area*:</div>
+						<input class="col" type="text" name="address_area">
+					</div>
+					<div class="row">
+						<div class="col">district*:</div>
+						<input class="col" type="text" name="address_district">
+					</div>
+					<div class="row">
+						<div class="col">state*:</div>
+						<input class="col" type="text" name="address_state">
+					</div>
+					<div class="row">
+						<div class="col">pin*:</div>
+						<input class="col" type="text" name="address_pin">
+					</div>
+				</div>
+			</div>
+			<div class="row block-2">
+				<div class="col-sm-6">
+					<h3 class="text-center">Recent Activities</h3>
+					<input type="text" name="activities">
+					<span id="act"></span>
+					<input type="button" value="add more" onClick="addMore('act')">
+				</div>
+				<input type="submit" value="Save">
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		alert('Warning! All the information you are giving here is visible to others, this is currently a project under development, there are many issues to be taken care of at this moment. Please fill in wisely.')
+		var addMore = function(field){
+			container = document.getElementById(field)
+			element = document.createElement('span')
+			switch(field){
+				case 'hobby':
+					element.innerHTML='<input type="text" name="about_hobbies">'
+					break;
+				case 'edu':
+					element.innerHTML= '<div class="row"><div class="col">degree*</div><input class="col" type="text" name="education_degree"></div><div class="row"><div class="col">board*</div><input class="col" type="text" name="education_board"></div><div class="row"><div class="col">score*</div><input class="col" type="text" name="education_score"></div><br>'
+					break;
+				case 'exp':
+					element.innerHTML = '<div class="row"><div class="col">position*</div><input class="position" type="text" name="experience_position"></div><div class="row"><div class="col">organisation*</div><input class="organisation" type="text" name="experience_organisation"></div><div class="row"><div class="col">description</div><input class="description" type="text" name="experience_description"></div><br>'
+						break;
+				case 'proj':
+					element.innerHTML = '<div class="row"><div class="col">title*</div><input type="text" name="project_title"></div><div class="row"><div class="col">description*</div><input type="text" name="project_description"></div><div class="row"><div class="col">Submission</div><input type="date" name="project_submission"></div><div class="row"><div class="col">Technologies:</div><input type="text" name="project_technologies"></div><div class="row"><div class="col">link</div><input type="text" name="project_link"></div><div class="row"><div class="col">repository</div><input type="text" name="project_git"></div><br>'
+					break;
+				case 'skills':
+					element.innerHTML = '<input type="text" name="skills">'
+					break;
+				case 'act':
+					element.innerHTML = '<input type="text" name="activities">'
+					break;
+			}
+			container.appendChild(element)
+		}
+	</script>
+</body>
+</html>

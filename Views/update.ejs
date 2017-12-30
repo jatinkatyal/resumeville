@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>Update - <%= user.name.first %> - Resumeville</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/ >
+	<link rel="stylesheet" type="text/css" href="/css/custom.css"/ >
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row block-1 text-center">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<form method="post" action="/users/<%= user._id %>/update/name">
+					<div class="row">
+						<div class="col">first:*</div>
+						<input class="col" type="text" name="first" value=<%= user.name.first%> >
+					</div>
+					<div class="row">
+						<div class="col">middle:</div>
+						<input class="col" type="text" name="middle" value=<%= user.name.middle%> >
+					</div>
+					<div class="row">
+						<div class="col">last:*</div>
+						<input class="col" type="text" name="last" value=<%= user.name.last %> >
+					</div>
+					<input type="submit" name="submit" value="update name">
+				</form>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row block-2 ">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h3 class="text-center">About</h3>
+				<form method="post" action="/users/<%= user._id %>/update/about">
+					<div class="row">
+						<div class="col">objective:</div>
+						<input class="col" type="text" name="objective" value="<%= user.about.objective %>" >
+					</div>
+					<div class="row">
+						<div class="col">long description:*</div>
+						<input class="col" type="text" name="long" value="<%= user.about.long %>">
+					</div>
+					<div class="row">
+						<div class="col">hobbies:</div>
+						<% if(user.about.hobbies){user.about.hobbies.forEach((item,index,arra)=>{ %>
+						<input type="text" name="hobbies" value="<%= item%>">
+						<% })} %>
+						<span id="hobby"></span>
+						<input type="button" value="add more" onClick= "addMore('hobby')" >
+					</div>
+					<div class="row">
+						<div class="col">moto:</div>
+						<input class="col" type="text" name="moto" value="<%= user.about.moto %>">
+					</div>
+					<input type="submit" name="submit" value="update about">
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row block-1">
+			<div class="col-sm-6">
+				<form method="post" action="/users/<%= user._id %>/update/education">
+					<h3 class="text-center">Education</h3>
+					<% user.education.forEach((item, index, array) => { %>
+						<div class="row">
+							<div class="col">degree*</div>
+							<input class="col" type="text" name="degree" value="<%= item.degree %>">
+						</div>
+						<div class="row">
+							<div class="col">board*</div>
+							<input class="col" type="text" name="board" value="<%= item.board %>">
+						</div>
+						<div class="row">
+							<div class="col">score*</div>
+							<input class="col" type="text" name="score" value="<%= item.score %>">
+						</div><br>
+					<% }) %>
+					<span id='edu'></span>
+					<input type="button" value="add more" onClick="addMore('edu')">
+					<input type="submit" name="submit" value="Update Education">
+				</form>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="text-center">Experience</h3>
+				<form method="post" action="/users/<%= user._id %>/update/experience">
+				<% if(user.experience){
+					user.experience.forEach((item, index, array) => { %>
+					<div class="row">
+						<div class="col">position*</div>
+						<input class="position" type="text" name="position" value="<%= item.position %>">
+					</div>
+					<div class="row">
+						<div class="col">organisation*</div>
+						<input class="organisation" type="text" name="organisation" value="<%= item.organisation %>">
+					</div>
+					<div class="row">
+						<div class="col">description</div>
+						<input class="description" type="text" name="description" value="<%= item.description %>">
+					</div>
+					<br>
+				<% })} %>
+					<span id="exp"></span>
+					<input type="button" onClick="addMore('exp')" value="addMore">
+					<input type="submit" name="submit" value="Update Experience">
+				</form>
+			</div>
+		</div>
+		<div class="row block-2">
+			<div class="col-sm-6">
+				<h3 class="text-center">Projects</h3>
+				<form method="post" action="/users/<%= user._id %>/update/projects">
+					<% if(user.projects){
+						user.projects.forEach((item, index, array) => { %>
+						<div class="row">
+							<div class="col">title*</div>
+							<input type="text" name="title" value="<%= item.title %>">
+						</div>
+						<div class="row">
+							<div class="col">description*</div>
+							<input type="text" name="description" value="<%= item.description %>">
+						</div>
+						<div class="row">
+							<div class="col">Submission</div>
+							<input type="date" name="submission" value="<%= item.submission %>">
+						</div>
+						<div class="row">
+							<div class="col">Technologies:</div>
+							<input type="text" name="technologies" value="<%= item.technologies %>">
+						</div>
+						<div class="row">
+							<div class="col">link</div>
+								<input type="text" name="link" value="<%= item.link %>">
+						</div>
+						<div class="row">
+							<div class="col">repository</div>
+							<input type="text" name="git" value="<%= item.git %>">
+						</div>
+						<br>
+					<% })} %>
+						<span id="proj"></span>
+						<input type="button" value="add more" onClick="addMore('proj')">
+					<input type="submit" name="submit" value="update projects">
+				</form>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="text-center">Skills</h3>
+				<form method="post" action="/users/<%= user._id %>/update/skills">
+				<% user.skills.forEach((item,index,array)=>{ %>
+					<input type="text" name="skills" value="<%= item %>">
+				<% })%>
+					<span id="skills"></span>
+					<input type="button" value="add more" onClick="addMore('skills')">
+					<input type="submit" name="submit" value="update skills">
+				</form>
+			</div>
+		</div>
+		<div class="row block-1">
+			<div class="col-sm-6">
+				<h3 class="text-center">Contact</h3>
+				<form method="post" action="/users/<%= user._id %>/update/contact">
+					<div class="row">
+						<span class="col">mobile*:</span>
+						<input class="col" type="text" name="mobile" value="<%= user.contact.mobile %>">
+					</div>
+					<div class="row">
+						<span class="col">telephone:</span>
+						<input class="col" type="text" name="telephone" value="<%= user.contact.telephone %>">
+					</div>
+					<div class="row">
+						<span class="col">email*:</span>
+						<input class="col" type="text" name="email" value="<%= user.contact.email %>">
+					</div>
+					<input type="submit" name="submit" value="Update Contact">
+				</form>
+			</div>
+			<div class="col-sm-6">
+				<h3 class="text-center">Address</h3>
+				<form method="post" action="/users/<%= user._id %>/update/address">
+					<div class="row">
+						<div class="col">street address*:</div>
+						<input class="col" type="text" name="streetAddress" value="<%= user.address.streetAddress %>" >
+					</div>
+					<div class="row">
+						<div class="col">area*:</div>
+						<input class="col" type="text" name="area" value="<%= user.address.area %>" >
+					</div>
+					<div class="row">
+						<div class="col">district*:</div>
+						<input class="col" type="text" name="district" value="<%= user.address.district %>" >
+					</div>
+					<div class="row">
+						<div class="col">state*:</div>
+						<input class="col" type="text" name="state" value="<%= user.address.state %>">
+					</div>
+					<div class="row">
+						<div class="col">pin*:</div>
+						<input class="col" type="text" name="pin" value="<%= user.address.pin %>">
+					</div>
+					<input type="submit" name="submit" value="update address">
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class="row block-2">
+			<div class="col-sm-6">
+				<h3 class="text-center">Recent Activities</h3>
+				<form method="post" action="/users/<%= user._id %>/update/activities">
+				<% user.activities.forEach((item,index,array)=>{ %>
+					<input type="text" name="activities" value="<%= item %>">
+				<% }) %>
+					<span id="act"></span>
+					<input type="button" value="add more" onClick="addMore('act')">
+					<input type="submit" name="submit" value="update activities">
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		alert('Warning! All the information you are giving here is visible to others, this is currently a project under development, there are many issues to be taken care of at this moment. Please fill in wisely. \n\nNavigation bar is turned off for technical reasons.')
+		var addMore = function(field){
+			container = document.getElementById(field)
+			element = document.createElement('span')
+			switch(field){
+				case 'hobby':
+					element.innerHTML='<input type="text" name="hobbies">'
+					break;
+				case 'edu':
+					element.innerHTML= '<div class="row"><div class="col">degree*</div><input class="col" type="text" name="degree"></div><div class="row"><div class="col">board*</div><input class="col" type="text" name="board"></div><div class="row"><div class="col">score*</div><input class="col" type="text" name="score"></div><br>'
+					break;
+				case 'exp':
+					element.innerHTML = '<div class="row"><div class="col">position*</div><input class="position" type="text" name="position"></div><div class="row"><div class="col">organisation*</div><input class="organisation" type="text" name="organisation"></div><div class="row"><div class="col">description</div><input class="description" type="text" name="description"></div><br>'
+						break;
+				case 'proj':
+					element.innerHTML = '<div class="row"><div class="col">title*</div><input type="text" name="title"></div><div class="row"><div class="col">description*</div><input type="text" name="description"></div><div class="row"><div class="col">Submission</div><input type="date" name="submission"></div><div class="row"><div class="col">Technologies:</div><input type="text" name="technologies"></div><div class="row"><div class="col">link</div><input type="text" name="link"></div><div class="row"><div class="col">repository</div><input type="text" name="git"></div><br>'
+					break;
+				case 'skills':
+					element.innerHTML = '<input type="text" name="skills">'
+					break;
+				case 'act':
+					element.innerHTML = '<input type="text" name="activities">'
+					break;
+			}
+			container.appendChild(element)
+		}
+	</script>
+</body>
+</html>

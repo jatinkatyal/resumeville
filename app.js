@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var ejs = require('ejs');
 var routes = require('./Routes')
+var bodyParser = require('body-parser');
 
 //***********************************************
 var app = express();
@@ -18,6 +19,8 @@ app.use((req,res,next)=>{
 });
 app.use(express.static(
 		path.join(__dirname,'./Statics')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/',routes);
 app.engine('html',ejs.renderFile);
 

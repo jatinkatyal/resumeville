@@ -18,8 +18,20 @@ router.route('/').get((req,res)=>{
 router.route('/users').get((req,res)=>{
 	controller.users.getUsers(req,res);
 });
+router.route('/users/add-user').get((req,res)=>{
+	controller.users.getNewUserForm(req,res);
+})
+router.route('/users/add-user').post((req,res)=>{
+	controller.users.postNewUserForm(req,res);
+})
 router.route('/users/:userid').get((req,res)=>{
 	controller.users.getUser(req,res);
+});
+router.route('/users/:userid/update').get((req,res)=>{
+	controller.users.getUserForm(req,res);
+});
+router.route('/users/:userid/update/:field').post((req,res)=>{
+	controller.users.update(req,res);
 });
 router.route('/users/:userid/about').get((req,res)=>{
 	controller.users.getAbout(req,res);

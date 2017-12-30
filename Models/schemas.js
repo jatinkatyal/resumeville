@@ -56,8 +56,10 @@ var address = new mongoose.Schema({
 var about = new mongoose.Schema({
 	objective : String,
 	moto : String,
-	short : String,
-	long : String,
+	long : {
+		type: String,
+		required: true
+	},
 	hobbies : [String]
 });
 
@@ -81,8 +83,11 @@ var projects = new mongoose.Schema({
 		type: String,
 		required : true
 	},
-	description : String,
-	technologies : [String],
+	description : {
+		type:String,
+		required:true
+	},
+	technologies : String,
 	submission : Date,
 	link : String,
 	git: String
